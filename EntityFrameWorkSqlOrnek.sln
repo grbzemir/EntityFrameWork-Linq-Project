@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameWorkSqlOrnek", "EntityFrameWorkSqlOrnek\EntityFrameWorkSqlOrnek.csproj", "{F76F0A5F-39B1-4001-A2A7-3406DA2E0151}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F76F0A5F-39B1-4001-A2A7-3406DA2E0151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76F0A5F-39B1-4001-A2A7-3406DA2E0151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76F0A5F-39B1-4001-A2A7-3406DA2E0151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76F0A5F-39B1-4001-A2A7-3406DA2E0151}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA27B32C-9CF1-4C4C-8C62-20810875EC45}
+	EndGlobalSection
+EndGlobal
