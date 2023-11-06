@@ -163,12 +163,23 @@ namespace EntityFrameWorkSqlOrnek
 
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton7.Checked == true)
+            if (radioButton8.Checked == true)
 
             {
 
                 // SELECT MANY İKİ TABLOYU BİRLEŞTİRME İŞLEMİDİR
-                var degerler = db.TBLNOTLAR.SelectMany(x => db.TBLOGRENCİ.Where(y => y.ID == x.OGR));
+                var degerler = db.TBLNOTLAR.SelectMany(x => db.TBLOGRENCİ.Where(y => y.ID == x.OGR), (x, y) =>
+
+                new
+
+                {
+
+                    y.AD,
+                    x.ORTALAMA
+
+                });
+
+
                 dataGridView1.DataSource = degerler.ToList();
 
 
