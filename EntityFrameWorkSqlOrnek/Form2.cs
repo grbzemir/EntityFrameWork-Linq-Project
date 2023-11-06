@@ -21,17 +21,17 @@ namespace EntityFrameWorkSqlOrnek
         private void BtnLinqEntity_Click(object sender, EventArgs e)
         {
 
-            if(radioButton1.Checked == true) 
-            
+            if (radioButton1.Checked == true)
+
             {
 
                 var degerler = db.TBLNOTLAR.Where(x => x.SINAV1 < 50);
                 dataGridView1.DataSource = degerler.ToList();
-            
-            
+
+
             }
 
-            
+
 
         }
 
@@ -76,7 +76,7 @@ namespace EntityFrameWorkSqlOrnek
 
             {
 
-                var degerler = db.TBLOGRENCİ.Select(x => new {soyadı=x.SOYAD});
+                var degerler = db.TBLOGRENCİ.Select(x => new { soyadı = x.SOYAD });
                 dataGridView1.DataSource = degerler.ToList();
 
 
@@ -94,7 +94,7 @@ namespace EntityFrameWorkSqlOrnek
 
             {
 
-                var degerler = db.TBLOGRENCİ.Select(x => new { Ad = x.AD.ToUpper() , Soyadı = x.SOYAD.ToLower() });
+                var degerler = db.TBLOGRENCİ.Select(x => new { Ad = x.AD.ToUpper(), Soyadı = x.SOYAD.ToLower() });
                 dataGridView1.DataSource = degerler.ToList();
 
 
@@ -112,12 +112,13 @@ namespace EntityFrameWorkSqlOrnek
 
             {
 
-                var degerler = db.TBLOGRENCİ.Select(x => new 
-                
-                { Ad = x.AD.ToUpper(), 
-                  Soyadı = x.SOYAD.ToLower() 
-                
-                }).Where(x=>x.Ad !="Ali");
+                var degerler = db.TBLOGRENCİ.Select(x => new
+
+                {
+                    Ad = x.AD.ToUpper(),
+                    Soyadı = x.SOYAD.ToLower()
+
+                }).Where(x => x.Ad != "Ali");
 
                 // şartlı seçme yaptım ali dışındakileri getirecek  
 
@@ -131,5 +132,33 @@ namespace EntityFrameWorkSqlOrnek
 
 
         }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+            if (radioButton7.Checked == true)
+
+            {
+
+                var degerler = db.TBLNOTLAR.Select(x => new
+
+                {
+
+                    OgrenciAd = x.OGR,
+                    Ortalama = x.ORTALAMA,
+                    Durum=x.DURUM==true?"Geçti":"Kaldı"
+
+
+                });                
+                   
+
+
+                dataGridView1.DataSource = degerler.ToList();
+
+
+            }
+        }
     }
+
 }

@@ -38,6 +38,7 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,24 @@
             this.radioButton6.UseVisualStyleBackColor = true;
             this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(300, 205);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(109, 20);
+            this.radioButton7.TabIndex = 12;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "Geçti Mi Kaldı";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radioButton7);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton4);
@@ -183,5 +197,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton7;
     }
 }
