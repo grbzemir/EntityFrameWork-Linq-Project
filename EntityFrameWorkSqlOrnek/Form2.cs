@@ -187,6 +187,81 @@ namespace EntityFrameWorkSqlOrnek
             }
 
         }
-    }
+
+        private void radioButton9_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (radioButton9.Checked == true)
+
+            {
+
+                // SELECT MANY İKİ TABLOYU BİRLEŞTİRME İŞLEMİDİR
+                var degerler = db.TBLOGRENCİ.OrderBy(x => x.ID).Take(3);
+                dataGridView1.DataSource = degerler.ToList();
+
+
+            
+
+            }
+
+        }
+
+        private void radioButton10_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+            if (radioButton10.Checked == true)
+
+            {
+
+                // SELECT MANY İKİ TABLOYU BİRLEŞTİRME İŞLEMİDİR
+                var degerler = db.TBLOGRENCİ.OrderByDescending(x => x.ID).Take(3);
+                dataGridView1.DataSource = degerler.ToList();
+
+
+
+
+            }
+
+        }
+
+        private void radioButton11_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (radioButton11.Checked == true)
+
+            {
+
+                // SELECT MANY İKİ TABLOYU BİRLEŞTİRME İŞLEMİDİR
+                var degerler = db.TBLOGRENCİ.OrderByDescending(x => x.AD);
+                dataGridView1.DataSource = degerler.ToList();
+
+
+
+
+            }
+
+        }
+
+        private void radioButton12_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (radioButton12.Checked == true)
+
+            {
+
+                // SELECT MANY İKİ TABLOYU BİRLEŞTİRME İŞLEMİDİR
+                var degerler = db.TBLOGRENCİ.OrderByDescending(x => x.ID).Skip(5);
+                dataGridView1.DataSource = degerler.ToList();
+
+
+
+
+            }
+
+        }
+    }   
 
 }
+
+

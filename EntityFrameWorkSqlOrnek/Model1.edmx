@@ -124,6 +124,7 @@
           <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FOTOGRAF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCİ" FromRole="TBLOGRENCİ" ToRole="TBLNOTLAR" />
+          <Property Name="SEHIR" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_DERSTABLO">
           <End Role="DERSTABLO" Type="Self.DERSTABLO" Multiplicity="0..1" />
