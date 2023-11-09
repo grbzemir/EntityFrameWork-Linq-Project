@@ -12,21 +12,12 @@ namespace EntityFrameWorkSqlOrnek
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLOGRENCİ
+    public partial class TBLURUN
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBLOGRENCİ()
-        {
-            this.TBLNOTLAR = new HashSet<TBLNOTLAR>();
-        }
-    
         public int ID { get; set; }
         public string AD { get; set; }
-        public string SOYAD { get; set; }
-        public string FOTOGRAF { get; set; }
-        public string SEHIR1 { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLNOTLAR> TBLNOTLAR { get; set; }
+        public string MARKA { get; set; }
+        public Nullable<int> FIYAT { get; set; }
+        public Nullable<int> STOK { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbSınavOgrenciModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbSınavOgrenciModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DERSTABLO">
           <Key>
             <PropertyRef Name="DERSID" />
@@ -40,6 +40,17 @@
           <Property Name="AD" Type="varchar" MaxLength="50" />
           <Property Name="SOYAD" Type="varchar" MaxLength="50" />
           <Property Name="FOTOGRAF" Type="varchar" MaxLength="50" />
+          <Property Name="SEHIR1" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLURUN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="50" />
+          <Property Name="MARKA" Type="varchar" MaxLength="50" />
+          <Property Name="FIYAT" Type="int" />
+          <Property Name="STOK" Type="int" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_DERSTABLO">
           <End Role="DERSTABLO" Type="Self.DERSTABLO" Multiplicity="0..1" />
@@ -71,6 +82,7 @@
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLOGRENCİ" EntityType="Self.TBLOGRENCİ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLURUN" EntityType="Self.TBLURUN" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TBLNOTLAR_DERSTABLO" Association="Self.FK_TBLNOTLAR_DERSTABLO">
             <End Role="DERSTABLO" EntitySet="DERSTABLO" />
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
@@ -80,8 +92,7 @@
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbSınavOgrenciModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -113,18 +124,7 @@
           <Property Name="ORTALAMA" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="DURUM" Type="Boolean" />
           <NavigationProperty Name="DERSTABLO" Relationship="Self.FK_TBLNOTLAR_DERSTABLO" FromRole="TBLNOTLAR" ToRole="DERSTABLO" />
-          <NavigationProperty Name="TBLOGRENCİ" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCİ" FromRole="TBLNOTLAR" ToRole="TBLOGRENCİ" />
-        </EntityType>
-        <EntityType Name="TBLOGRENCİ">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FOTOGRAF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCİ" FromRole="TBLOGRENCİ" ToRole="TBLNOTLAR" />
-          <Property Name="SEHIR" Type="String" Nullable="false" />
+          <NavigationProperty Name="TBLOGRENCİ" Relationship="DbSınavOgrenciModel.FK_TBLNOTLAR_TBLOGRENCİ" FromRole="TBLNOTLAR" ToRole="TBLOGRENCİ" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_DERSTABLO">
           <End Role="DERSTABLO" Type="Self.DERSTABLO" Multiplicity="0..1" />
@@ -138,32 +138,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBLNOTLAR_TBLOGRENCİ">
-          <End Role="TBLOGRENCİ" Type="Self.TBLOGRENCİ" Multiplicity="0..1" />
-          <End Role="TBLNOTLAR" Type="Self.TBLNOTLAR" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBLOGRENCİ">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="TBLNOTLAR">
-              <PropertyRef Name="OGR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DbSınavOgrenciEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DERSTABLO" EntityType="Self.DERSTABLO" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" />
-          <EntitySet Name="TBLOGRENCİ" EntityType="Self.TBLOGRENCİ" />
           <AssociationSet Name="FK_TBLNOTLAR_DERSTABLO" Association="Self.FK_TBLNOTLAR_DERSTABLO">
             <End Role="DERSTABLO" EntitySet="DERSTABLO" />
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBLNOTLAR_TBLOGRENCİ" Association="Self.FK_TBLNOTLAR_TBLOGRENCİ">
+          <FunctionImport Name="NOTLISTESI" ReturnType="Collection(DbSınavOgrenciModel.NOTLISTESI_Result)" />
+          <EntitySet Name="TBLOGRENCİ" EntityType="DbSınavOgrenciModel.TBLOGRENCİ" />
+          <EntitySet Name="TBLURUN" EntityType="DbSınavOgrenciModel.TBLURUN" />
+          <AssociationSet Name="FK_TBLNOTLAR_TBLOGRENCİ" Association="DbSınavOgrenciModel.FK_TBLNOTLAR_TBLOGRENCİ">
             <End Role="TBLOGRENCİ" EntitySet="TBLOGRENCİ" />
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
           </AssociationSet>
-          <FunctionImport Name="NOTLISTESI" ReturnType="Collection(DbSınavOgrenciModel.NOTLISTESI_Result)" />
         </EntityContainer>
         <ComplexType Name="NOTLISTESI_Result">
           <Property Type="Int32" Name="NOTID" Nullable="false" />
@@ -175,6 +164,39 @@
           <Property Type="Decimal" Name="ORTALAMA" Nullable="true" Precision="5" Scale="2" />
           <Property Type="Boolean" Name="DURUM" Nullable="true" />
         </ComplexType>
+        <EntityType Name="TBLOGRENCİ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FOTOGRAF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SEHIR1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLNOTLAR" Relationship="DbSınavOgrenciModel.FK_TBLNOTLAR_TBLOGRENCİ" FromRole="TBLOGRENCİ" ToRole="TBLNOTLAR" />
+        </EntityType>
+        <EntityType Name="TBLURUN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MARKA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Int32" />
+          <Property Name="STOK" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_TBLNOTLAR_TBLOGRENCİ">
+          <End Type="DbSınavOgrenciModel.TBLOGRENCİ" Role="TBLOGRENCİ" Multiplicity="0..1" />
+          <End Type="DbSınavOgrenciModel.TBLNOTLAR" Role="TBLNOTLAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLOGRENCİ">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLNOTLAR">
+              <PropertyRef Name="OGR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -211,16 +233,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TBLOGRENCİ">
-            <EntityTypeMapping TypeName="DbSınavOgrenciModel.TBLOGRENCİ">
-              <MappingFragment StoreEntitySet="TBLOGRENCİ">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AD" ColumnName="AD" />
-                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
-                <ScalarProperty Name="FOTOGRAF" ColumnName="FOTOGRAF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="NOTLISTESI" FunctionName="DbSınavOgrenciModel.Store.NOTLISTESI">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DbSınavOgrenciModel.NOTLISTESI_Result">
@@ -235,6 +247,28 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TBLOGRENCİ">
+            <EntityTypeMapping TypeName="DbSınavOgrenciModel.TBLOGRENCİ">
+              <MappingFragment StoreEntitySet="TBLOGRENCİ">
+                <ScalarProperty Name="SEHIR1" ColumnName="SEHIR1" />
+                <ScalarProperty Name="FOTOGRAF" ColumnName="FOTOGRAF" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLURUN">
+            <EntityTypeMapping TypeName="DbSınavOgrenciModel.TBLURUN">
+              <MappingFragment StoreEntitySet="TBLURUN">
+                <ScalarProperty Name="STOK" ColumnName="STOK" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
